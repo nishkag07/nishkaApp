@@ -1,1 +1,400 @@
-hello
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rex Gattu 🐾</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Comic Sans MS", "Trebuchet MS", Arial, sans-serif;
+      background: linear-gradient(135deg, #fff4d6, #ffd6e8, #d6f3ff);
+      min-height: 100vh;
+      color: #3b2f2f;
+      overflow-x: hidden;
+    }
+
+    .paw-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.12;
+      z-index: 0;
+      background-image: radial-gradient(circle, #000 2px, transparent 3px);
+      background-size: 42px 42px;
+      animation: floatPaws 12s linear infinite;
+    }
+
+    @keyframes floatPaws {
+      from {
+        background-position: 0 0;
+      }
+      to {
+        background-position: 80px 120px;
+      }
+    }
+
+    header {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 60px 20px 30px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: white;
+      padding: 10px 18px;
+      border-radius: 999px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 9vw, 6rem);
+      color: #ff7a00;
+      text-shadow: 4px 4px 0 #fff;
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      font-size: 1.3rem;
+      max-width: 650px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    .hero-card {
+      position: relative;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(8px);
+      max-width: 900px;
+      margin: 30px auto;
+      border-radius: 32px;
+      padding: 30px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.16);
+      text-align: center;
+    }
+
+    .rex-photo {
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 8px solid white;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+      margin-bottom: 20px;
+      background: #fff0c2;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      margin-top: 25px;
+    }
+
+    .stat-box {
+      background: white;
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .stat-box h3 {
+      color: #ff7a00;
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+
+    .stat-box p {
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+
+    .section {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    .section h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 28px;
+      color: #3b2f2f;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 14px 35px rgba(0,0,0,0.14);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px) rotate(-1deg);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.18);
+    }
+
+    .card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      background: #ffe6a7;
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .card-content h3 {
+      color: #ff7a00;
+      margin-bottom: 8px;
+      font-size: 1.4rem;
+    }
+
+    .card-content p {
+      line-height: 1.5;
+      font-size: 1rem;
+    }
+
+    .fun-zone {
+      text-align: center;
+      background: #fff;
+      border-radius: 30px;
+      padding: 35px 20px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.14);
+    }
+
+    button {
+      border: none;
+      background: #ff7a00;
+      color: white;
+      padding: 15px 28px;
+      border-radius: 999px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 18px;
+      box-shadow: 0 8px 18px rgba(255,122,0,0.35);
+      transition: transform 0.2s ease;
+    }
+
+    button:hover {
+      transform: scale(1.07);
+    }
+
+    #barkMessage {
+      margin-top: 18px;
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #ff7a00;
+      min-height: 36px;
+    }
+
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 40px 20px;
+      font-weight: bold;
+    }
+
+    .floating-dog {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      background: white;
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 2.2rem;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      z-index: 5;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-card {
+        margin: 20px;
+        padding: 22px;
+      }
+
+      .rex-photo {
+        width: 180px;
+        height: 180px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="paw-bg"></div>
+
+  <header>
+    <div class="badge">🐾 Official Website of Rex Gattu 🐾</div>
+    <h1>Rex Gattu</h1>
+    <p class="subtitle">
+      Welcome to Rex’s little corner of the internet — full of zoomies, naps, snacks,
+      and memories through the years.
+    </p>
+  </header>
+
+  <main>
+    <section class="hero-card">
+      <img src="images/rex-now.jpg" alt="Rex the dog" class="rex-photo" />
+
+      <h2>Hi, I’m Rex 🐶</h2>
+      <p>
+        I am cute, playful, slightly dramatic, and always ready for treats.
+      </p>
+
+      <div class="stats">
+        <div class="stat-box">
+          <h3>Birthday</h3>
+          <p>Oct 31, 2024</p>
+        </div>
+
+        <div class="stat-box">
+          <h3>Age</h3>
+          <p id="age">Loading...</p>
+        </div>
+
+        <div class="stat-box">
+          <h3>Favorite Activity</h3>
+          <p>Zoomies</p>
+        </div>
+
+        <div class="stat-box">
+          <h3>Vibe</h3>
+          <p>Playful</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Rex Through the Years 📸</h2>
+
+      <div class="timeline">
+        <div class="card">
+          <img src="images/rex-puppy.jpg" alt="Rex as a puppy" />
+          <div class="card-content">
+            <h3>Baby Rex</h3>
+            <p>
+              Tiny paws, big eyes, and the beginning of Rex’s very important career as the cutest dog ever.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="images/rex-one.jpg" alt="Rex growing up" />
+          <div class="card-content">
+            <h3>Growing Up</h3>
+            <p>
+              More energy, more fluff, and definitely more opinions about snacks.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="images/rex-now.jpg" alt="Rex now" />
+          <div class="card-content">
+            <h3>Rex Today</h3>
+            <p>
+              Still adorable. Still playful. Still the main character of the house.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="fun-zone">
+        <h2>Give Rex a Treat 🍪</h2>
+        <p>Click the button and see what Rex has to say.</p>
+
+        <button onclick="giveTreat()">Give Treat</button>
+
+        <div id="barkMessage"></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="floating-dog">🐶</div>
+
+  <footer>
+    Made with love for Rex 🐾
+  </footer>
+
+  <script>
+    function calculateAge() {
+      const birthday = new Date("2024-10-31");
+      const today = new Date();
+
+      let months =
+        (today.getFullYear() - birthday.getFullYear()) * 12 +
+        (today.getMonth() - birthday.getMonth());
+
+      if (today.getDate() < birthday.getDate()) {
+        months--;
+      }
+
+      if (months < 12) {
+        document.getElementById("age").textContent = months + " months old";
+      } else {
+        const years = Math.floor(months / 12);
+        const remainingMonths = months % 12;
+
+        document.getElementById("age").textContent =
+          years + " year" + (years > 1 ? "s" : "") +
+          (remainingMonths > 0 ? " & " + remainingMonths + " months" : "");
+      }
+    }
+
+    function giveTreat() {
+      const messages = [
+        "Woof! Best day ever 🐾",
+        "Rex approves this treat 🍪",
+        "Tail wagging activated!",
+        "More treats please 👀",
+        "Zoomies incoming!!!",
+        "Rex says thank you 🐶"
+      ];
+
+      const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+      document.getElementById("barkMessage").textContent = randomMessage;
+    }
+
+    calculateAge();
+  </script>
+</body>
+</html>
